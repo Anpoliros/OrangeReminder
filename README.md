@@ -1,18 +1,54 @@
-# 🍊 OrangeReminder - 健康用机提醒应用
+# 🍊 OrangeReminder 2.0 - 专业级健康用机提醒应用
 
-一款专为防止长时间使用手机而设计的iOS提醒应用，帮助用户养成健康的手机使用习惯。
+一款功能全面的iOS健康用机应用，通过智能提醒组、情景模式、应用白名单等高级功能，帮助用户建立科学的手机使用习惯。
 
-## 📱 功能特性
+[![Version](https://img.shields.io/badge/version-2.0.0-orange)](https://github.com/Anpoliros/OrangeReminder)
+[![Platform](https://img.shields.io/badge/platform-iOS%2015%2B-blue)](https://developer.apple.com/ios/)
+[![Swift](https://img.shields.io/badge/Swift-5.7-orange)](https://swift.org)
+
+## ✨ 2.0 版本新特性
+
+### 🎯 提醒组系统
+- **自定义提醒组**：创建多个不同场景的提醒配置
+- **快速模板**：内置工作、学习、睡前等5种预设模板
+- **一键切换**：快速在不同提醒组之间切换
+- **独立配置**：每个提醒组拥有独立的时间限制、提醒方式、白名单
+
+### ⏱️ 情景模式（番茄钟）
+- **工作-休息循环**：自定义工作和休息时间段
+- **多阶段支持**：支持复杂的时间安排（如 40分钟-5分钟-20分钟-15分钟）
+- **循环重复**：自动循环执行时间表
+- **实时进度**：可视化显示当前阶段进度
+- **灵活控制**：支持跳过、重新开始等操作
+
+### 🛡️ 应用白名单
+- **排除统计**：白名单应用不计入使用时间
+- **分类管理**：按生产力、教育、健康等8大类别管理
+- **自定义添加**：支持手动添加任意应用
+- **预设应用**：包含常用生产力和学习工具
+
+### 📱 Widget 小组件
+- **桌面快捷开关**：无需打开应用即可切换追踪状态
+- **实时状态显示**：显示当前提醒组和追踪状态
+- **两种尺寸**：支持小号和中号widget
+- **精美设计**：渐变背景，动态颜色
+
+### ☁️ iCloud 同步
+- **一键备份**：将所有设置备份到iCloud Drive
+- **跨设备恢复**：在新设备上快速恢复配置
+- **数据安全**：使用Apple原生iCloud存储
+- **同步状态**：实时显示同步状态和时间
+
+## 📱 核心功能
 
 ### 1. 智能屏幕时间跟踪
 - ⏱️ 实时监控应用使用时间
 - 📊 自动统计每日屏幕使用时长
 - 🌅 每日自动重置统计数据
 - 💾 数据持久化存储
+- 🔄 支持暂停/恢复追踪
 
 ### 2. 多种提醒方式
-
-应用提供5种不同强度的提醒方式，用户可根据需求选择：
 
 #### 📢 标准通知
 - 基础的推送通知方式
@@ -43,57 +79,127 @@
 - 适合需要强制执行的场景
 - 真正无法忽略的提醒
 
-### 3. 灵活的时间设置
-- ⏰ 自定义每日使用限制（小时 + 分钟）
-- 📈 实时显示使用进度
-- 🎯 剩余时间倒计时
-- 🔄 手动重置功能
+### 3. 预设提醒组模板
 
-### 4. 健康建议
-应用内置多条健康使用建议：
-- 👁️ 每20分钟远眺20秒，保护视力
-- 🚶 每小时起身活动，促进血液循环
-- 🌙 睡前1小时避免使用手机
-- 💧 定时补充水分
+#### 📘 标准模式
+- 60分钟限制
+- 时间关键通知
+- 适合日常使用
 
-## 🎨 界面特点
+#### 💼 工作模式
+- 120分钟限制
+- 应用内强制弹窗
+- 40分钟工作 - 5分钟休息 - 40分钟工作 - 15分钟长休息
+- 白名单：生产力工具、办公软件
 
-- 🎯 简洁直观的主界面
-- 📊 可视化的使用进度条
-- 🎨 动态颜色提示（绿→黄→橙→红）
-- ⚠️ 超限警告明显展示
-- ⚙️ 完善的设置界面
+#### 📚 学习模式
+- 90分钟限制
+- 组合提醒
+- 25分钟学习 - 5分钟休息（番茄钟）
+- 白名单：学习应用、阅读工具
 
-## 🔧 技术实现
+#### 🌙 睡前模式
+- 30分钟限制
+- 组合提醒
+- 白名单：冥想应用、睡眠音乐
 
-### 架构
-- SwiftUI 框架
-- MVVM 架构模式
-- Combine 响应式编程
+#### 🆓 自由模式
+- 180分钟限制
+- 标准通知
+- 适合周末放松时段
+
+## 🎨 界面设计
+
+### TabView 结构
+```
+┌─────────────────────────────┐
+│  📱 当前提醒 | 📦 提醒组 | ⚙️ 设置  │
+└─────────────────────────────┘
+```
+
+### Tab 1: 当前提醒
+- 🔘 快捷追踪开关
+- 🎯 当前提醒组卡片
+- ⏱️ 使用时间大显示
+- 📊 可视化进度条
+- 🏃 情景模式进度（如有）
+- 📈 统计卡片
+- ⚡ 快捷操作按钮
+
+### Tab 2: 提醒组
+- 📋 预设模板列表
+- ✏️ 我的提醒组
+- ➕ 创建自定义提醒组
+- 🔧 编辑/复制/删除
+- ✅ 快速激活
+
+### Tab 3: 设置
+- 🔄 快捷追踪开关
+- 🛡️ 应用白名单管理
+- ☁️ iCloud 备份/恢复
+- 🔔 通知测试
+- 🗑️ 数据管理
+- ℹ️ 关于信息
+
+## 🔧 技术架构
+
+### 技术栈
+- **框架**: SwiftUI + Combine
+- **架构**: MVVM
+- **存储**: UserDefaults + iCloud Drive
+- **通知**: UNUserNotificationCenter
+- **Widget**: WidgetKit
+- **同步**: App Groups + CloudKit
 
 ### 核心组件
 
-#### ScreenTimeTracker
 ```swift
-- 屏幕时间追踪引擎
-- 应用生命周期监控
-- 前后台切换处理
-- 数据持久化
+// 数据模型
+ReminderGroup          // 提醒组
+UsageScenario          // 使用情景
+SessionPeriod          // 时间段
+AppInfo                // 应用信息
+
+// 管理器
+ReminderGroupManager    // 提醒组管理
+AppWhitelistManager     // 白名单管理
+EnhancedScreenTimeTracker // 增强的时间跟踪
+NotificationManager     // 通知管理
+iCloudSyncManager       // iCloud同步
+
+// 视图
+MainTabView             // 主TabView
+CurrentReminderView     // 当前提醒Tab
+ReminderGroupsView      // 提醒组Tab
+EnhancedSettingsView    // 设置Tab
+GroupEditView           // 提醒组编辑
+WhitelistManagerView    // 白名单管理
 ```
 
-#### NotificationManager
-```swift
-- 5种提醒方式实现
-- UNUserNotificationCenter 集成
-- 时间关键通知支持
-- 应用内弹窗控制
-```
+### 项目结构
 
-#### Views
-```swift
-- ContentView: 主界面
-- SettingsView: 设置界面
-- InAppAlertView: 全屏弹窗
+```
+OrangeReminder/
+├── OrangeReminderApp.swift     # 应用入口
+├── Models/                      # 数据模型
+│   ├── ReminderGroup.swift
+│   ├── ReminderGroupManager.swift
+│   ├── AppWhitelistManager.swift
+│   ├── EnhancedScreenTimeTracker.swift
+│   ├── NotificationManager.swift
+│   └── iCloudSyncManager.swift
+├── Views/                       # 视图
+│   ├── MainTabView.swift
+│   ├── CurrentReminderView.swift
+│   ├── ReminderGroupsView.swift
+│   ├── GroupEditView.swift
+│   ├── EnhancedSettingsView.swift
+│   ├── WhitelistManagerView.swift
+│   └── InAppAlertView.swift
+├── Widget/                      # Widget扩展
+│   ├── OrangeReminderWidget.swift
+│   └── Info.plist
+└── Info.plist                   # 应用配置
 ```
 
 ## 📋 使用要求
@@ -101,151 +207,215 @@
 - iOS 15.0+
 - Xcode 14.0+
 - Swift 5.7+
+- iCloud Drive（用于备份功能，可选）
 
 ## 🚀 安装与运行
 
-1. **克隆项目**
+### 1. 克隆项目
 ```bash
 git clone https://github.com/Anpoliros/OrangeReminder.git
 cd OrangeReminder
 ```
 
-2. **使用 Xcode 打开**
+### 2. 配置 Xcode
 ```bash
 open OrangeReminder.xcodeproj
 ```
 
-3. **配置开发者账号**
+### 3. 配置证书和能力
 - 在 Xcode 中设置你的开发团队
 - 修改 Bundle Identifier
+- 启用以下 Capabilities:
+  - ✅ Push Notifications
+  - ✅ Background Modes
+  - ✅ App Groups (`group.com.orangereminder.shared`)
+  - ✅ iCloud (iCloud Documents)
 
-4. **运行应用**
+### 4. 配置 Widget Extension
+- 确保 Widget target 使用相同的 App Group
+- 配置 Widget Bundle Identifier
+
+### 5. 运行
 - 选择目标设备或模拟器
-- 点击运行按钮（⌘R）
-
-## ⚙️ 配置说明
-
-### 通知权限
-
-应用需要以下通知权限：
-- ✅ Alert（警报）
-- ✅ Sound（声音）
-- ✅ Badge（角标）
-- ✅ Critical Alert（关键警报）- 用于时间关键通知
-
-### Info.plist 配置
-
-已包含必要的权限描述：
-```xml
-<key>NSUserTrackingUsageDescription</key>
-<string>我们需要追踪您的应用使用时间，以便在您使用手机过长时提醒您休息。</string>
-```
-
-### 后台任务（可选）
-
-应用支持后台刷新以更新使用时间统计：
-```xml
-<key>UIBackgroundModes</key>
-<array>
-    <string>processing</string>
-</array>
-```
+- 运行主应用 (⌘R)
+- 添加 Widget 到主屏幕
 
 ## 📖 使用指南
 
-### 首次使用
+### 首次设置
 
 1. **授予权限**
    - 启动应用后会请求通知权限
    - 建议全部允许以获得最佳体验
 
-2. **设置使用限制**
-   - 点击右上角设置按钮
-   - 选择每日使用时间限制
-   - 推荐设置：1-2小时
+2. **选择或创建提醒组**
+   - 在"提醒组"Tab查看预设模板
+   - 点击"添加"创建自己的提醒组
+   - 或使用快速模板
 
-3. **选择提醒方式**
-   - 在设置中选择适合的提醒强度
-   - 可以使用"测试提醒"功能体验效果
+3. **配置白名单（可选）**
+   - 进入"设置" > "应用白名单"
+   - 添加不需要计时的应用
+
+4. **添加 Widget 到桌面**
+   - 长按主屏幕
+   - 点击左上角"+"
+   - 搜索"OrangeReminder"
+   - 选择小号或中号Widget
 
 ### 日常使用
 
-- 📱 应用会在后台自动追踪使用时间
-- ⏰ 达到限制时自动触发提醒
-- 📊 主界面实时显示使用情况
-- 🔄 每日零点自动重置统计
+#### 快速切换状态
+- **方式一**: 主屏幕Widget一键切换
+- **方式二**: 应用内"当前提醒"Tab顶部开关
+- **方式三**: "设置"Tab快捷开关
 
-## 🎯 设计理念
+#### 切换提醒组
+- 在"当前提醒"Tab点击提醒组卡片
+- 从列表中选择要激活的提醒组
+- 立即生效
 
-### 为什么需要多种提醒方式？
+#### 使用情景模式
+1. 激活包含情景模式的提醒组（如工作模式）
+2. 点击"开始情景模式"
+3. 按照时间表工作和休息
+4. 支持跳过当前阶段或重新开始
 
-1. **标准通知** - 基础但容易被忽略
-2. **时间关键通知** - 能突破专注模式，但用户仍可快速关闭
-3. **应用内弹窗** - 强制阅读10秒，提高提醒效果
-4. **持续提醒** - 重复发送，确保用户注意到
-5. **组合方式** - 多管齐下，最大化提醒效果
+#### 管理白名单
+1. 进入"设置" > "应用白名单"
+2. 点击"+"添加新应用
+3. 选择分类、图标和名称
+4. 白名单应用的使用时间不会被统计
 
-### 用户体验平衡
+#### 备份到 iCloud
+1. 进入"设置"Tab
+2. 点击"备份到iCloud"
+3. 等待同步完成
+4. 在其他设备上可以"从iCloud恢复"
 
-应用在"有效提醒"和"用户体验"之间寻找平衡：
-- ✅ 提供足够强的提醒确保用户注意
-- ✅ 避免过于激进影响正常使用
-- ✅ 给用户选择权
-- ✅ 提供健康建议而非单纯限制
+## 🎯 使用场景
+
+### 场景 1: 工作时段
+- 激活"工作模式"提醒组
+- 启用情景模式（40-5-40-15循环）
+- 生产力工具加入白名单
+- 专注工作，定时休息
+
+### 场景 2: 学习备考
+- 使用"学习模式"提醒组
+- 番茄钟式学习（25-5循环）
+- 学习应用不计时
+- 保持高效学习节奏
+
+### 场景 3: 睡前放松
+- 切换到"睡前模式"
+- 30分钟限制+组合提醒
+- 只允许冥想和睡眠音乐
+- 避免过度使用影响睡眠
+
+### 场景 4: 周末自由
+- 使用"自由模式"
+- 放宽时间限制
+- 适度娱乐
+- 仍有温和提醒
 
 ## 🔒 隐私说明
 
-- ✅ 所有数据仅存储在本地设备
+- ✅ 所有数据仅存储在本地和您的iCloud账户
 - ✅ 不收集任何个人信息
-- ✅ 不上传使用数据到服务器
-- ✅ 完全离线工作
+- ✅ 不上传数据到第三方服务器
+- ✅ 完全离线工作（除iCloud同步外）
+- ✅ 开源透明，代码可审查
+
+## ⚠️ 重要说明
+
+### 关于 CallKit
+虽然 CallKit 可以显示全屏来电界面，但：
+- ⚠️ Apple 规定仅用于 VoIP 通话应用
+- ⚠️ 滥用会导致应用被拒或下架
+- ✅ 本应用使用合规的提醒方式
+- ✅ "组合提醒"已经足够有效
+
+### 关于 Screen Time API
+- iOS 提供官方 Screen Time API (DeviceActivity)
+- 需要特殊 entitlement 和 Apple 审批
+- 本应用使用应用生命周期追踪
+- 未来版本可能集成官方 API
+
+### 关于白名单
+- 当前版本白名单基于应用名称
+- 实际应用使用时间由系统级追踪决定
+- 白名单主要用于提醒组的个性化配置
+
+## 🚧 已知限制
+
+1. **后台追踪**: 应用在后台时，追踪会暂停
+2. **应用识别**: 无法自动识别其他应用，需手动添加白名单
+3. **跨设备**: 使用时间不跨设备同步（每台设备独立计时）
+4. **系统权限**: 无法访问系统级使用时间数据
 
 ## 🛠️ 未来计划
 
-- [ ] Widget 小组件支持
-- [ ] 使用统计图表
-- [ ] 每周/每月报告
-- [ ] 应用分类统计（需要 Screen Time API）
-- [ ] iCloud 同步
+### v2.1（近期）
+- [ ] 使用统计图表（日/周/月）
+- [ ] 更多预设模板
+- [ ] 导入/导出提醒组
+- [ ] 深色模式优化
+
+### v2.5（中期）
 - [ ] Apple Watch 支持
-- [ ] 家长控制功能
+- [ ] 家庭共享功能
+- [ ] 使用报告邮件提醒
+- [ ] Siri Shortcuts 支持
 
-## ⚠️ 注意事项
+### v3.0（远期）
+- [ ] Screen Time API 集成
+- [ ] 应用分类统计
+- [ ] AI 智能建议
+- [ ] 社交功能（挑战、排行）
 
-### 关于 CallKit
+## 🐛 问题反馈
 
-虽然 CallKit 可以显示全屏来电界面（用户无法关闭），但：
-- ⚠️ Apple 规定 CallKit **仅用于 VoIP 通话应用**
-- ⚠️ 滥用 CallKit 会导致应用被拒或下架
-- ✅ 本应用使用**合规的通知方式**
-- ✅ "组合提醒"模式已经足够强效
-
-### 关于 Screen Time API
-
-iOS 提供了官方的 Screen Time API（DeviceActivity 框架），但：
-- 需要特殊的 entitlement 权限
-- 需要 Apple 审批
-- 主要用于家长控制类应用
-- 本应用使用应用生命周期追踪作为替代方案
-
-## 📄 许可证
-
-MIT License - 详见 LICENSE 文件
-
-## 👨‍💻 开发者
-
-OrangeReminder Team
+如遇到问题或有功能建议，请：
+- 提交 [GitHub Issue](https://github.com/Anpoliros/OrangeReminder/issues)
+- 包含详细的问题描述和复现步骤
+- 附上系统版本和应用版本号
 
 ## 🤝 贡献
 
-欢迎提交 Issue 和 Pull Request！
+欢迎贡献代码！请遵循以下步骤：
 
-## 📞 支持
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
 
-如有问题或建议，请：
-- 提交 GitHub Issue
-- 发送邮件至开发团队
+## 📄 许可证
+
+MIT License - 详见 [LICENSE](LICENSE) 文件
+
+## 👨‍💻 开发团队
+
+**OrangeReminder Team**
+
+- 核心开发: Claude + Human Collaboration
+- UI/UX 设计: SwiftUI Best Practices
+- 图标设计: SF Symbols
+
+## 🙏 致谢
+
+- Apple 的 SwiftUI 框架
+- iOS Developer Community
+- 所有提供反馈的用户
+
+## 📞 联系方式
+
+- GitHub: [@Anpoliros](https://github.com/Anpoliros)
+- Issues: [项目Issues页面](https://github.com/Anpoliros/OrangeReminder/issues)
 
 ---
 
 **让我们一起养成健康的手机使用习惯！** 🍊✨
+
+*OrangeReminder - 您的数字健康守护者*
